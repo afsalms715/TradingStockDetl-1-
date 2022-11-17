@@ -1,0 +1,12 @@
+/* main {
+  text-align: center;
+  vertical-align: center;
+  line-height: 100vh
+} */
+.delete-button{
+  visibility:hidden;
+}
+
+.table-row:hover .delete-button{
+  visibility:visible;
+}
