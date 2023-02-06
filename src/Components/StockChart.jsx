@@ -12,17 +12,17 @@ const StockChart = ({ chartData, symbol }) => {
         return day
       case "W":
         return weak
-      case "Y":
+      case "M":
         return year
       default:
         return day
     }
   }
-  const color=getData()[getData().length-1].y - getData()[0].y
-          >0? "#26C281":"#ed3419";
-  
+  const color = getData()[getData().length - 1].y - getData()[0].y
+    > 0 ? "#26C281" : "#ed3419";
+
   const options = {
-    colors:[color],
+    colors: [color],
     title: {
       text: symbol,
       align: "center",
@@ -48,28 +48,28 @@ const StockChart = ({ chartData, symbol }) => {
       }
     }
   }
-  
+
   const series = [{
     name: symbol,
     data: getData()
   }]
 
-  const selectedButton=(button)=>{
-    console.log("btn:"+button+"dateFormat:"+dateFormat)
-    if(button===dateFormat){
+  const selectedButton = (button) => {
+    console.log("btn:" + button + "dateFormat:" + dateFormat)
+    if (button === dateFormat) {
       return "btn btn-primary me-1";
-    }else{
+    } else {
       return "btn btn-outline-primary me-1";
     }
   }
 
   return (
-    <div className="mt-5 p-4 shadow-sm bg-white">
+    <div className="mt-3 p-4 shadow-sm bg-white" style={{ width: '80%' }}>
       <Chart options={options} series={series} type="area" width="100%" />
       <div className="mt-1">
         <button onClick={() => setDateFormat("24h")} className={selectedButton("24h")} >24h</button>
-        <button onClick={() => setDateFormat("W")} className={selectedButton("W")}>W</button>
-        <button onClick={() => setDateFormat("Y")} className={selectedButton("Y")}>Y</button>
+        <button onClick={() => setDateFormat("M")} className={selectedButton("M")}>M</button>
+        <button onClick={() => setDateFormat("W")} className={selectedButton("W")}>Y</button>
       </div>
     </div>
   )

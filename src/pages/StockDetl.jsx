@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import FinnHub from '../apis/FinnHub'
 import StockChart from '../Components/StockChart'
+import { StockData } from '../Components/StockData'
 
 const formateData = (data) => {
   return data.t.map((el, index) => {
@@ -60,8 +61,9 @@ const StockDetl = () => {
   }, [chartData])
 
   return (chartData && (
-    <div>
+    <div style={{ display: 'flex', justifyContent: 'center', height: '95vh' }}>
       <StockChart chartData={chartData} symbol={symbol} />
+      <StockData symbol={symbol} />
     </div>)
   )
 }
